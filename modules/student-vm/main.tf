@@ -1,5 +1,13 @@
+data "aws_ssm_parameter" "student_password" {
+  name = "/lab-parameters/automation-student-vm/ssh-password"
+}
+
 data "template_file" "user_data" {
   template = "${file("${path.module}/user_data.tpl")}"
+
+  vars = {
+    password = data.aws_ssm_parameter.student_password.value
+  }
 }
 
 data "aws_ami" "latest_student_image" {

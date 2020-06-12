@@ -6,6 +6,11 @@ sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install ansible -y
 
+# Setting default password and SSH Auth
+sudo echo -e "${password}\n${password}" | passwd ubuntu
+sudo sed -i "s/.*PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+sudo systemctl restart sshd
+
 ## Setting up MOTD
 sudo chmod -x /etc/update-motd.d/*
 
