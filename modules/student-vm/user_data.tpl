@@ -5,6 +5,9 @@ sudo apt-get update
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install ansible -y
+sudo apt install python-pip -y
+sudo pip install pyOpenSSL
+sudo apt-get upgrade -y
 
 # Setting default password and SSH Auth
 sudo echo -e "${password}\n${password}" | passwd ubuntu
